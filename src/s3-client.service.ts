@@ -8,20 +8,24 @@ import {
   S3Client,
 } from '@aws-sdk/client-s3'
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
-import { Injectable } from '@nestjs/common'
+import { Inject, Injectable } from '@nestjs/common'
+import { MODULE_OPTIONS } from './constants'
 import { DefaultArgs, DefaultOptions, SendArgs, SignedUrlArgs } from './types'
 
 @Injectable()
-export class S3ClientService<TOptions extends DefaultOptions> {
+export class S3Service {
   private readonly s3Client: S3Client
   private readonly defaultBucket?: string
 
-  constructor({ region, credentials, defaultBucket }: TOptions) {
+  constructor(
+    @Inject(MODULE_OPTIONS) private readonly options: DefaultOptions,
+  ) {
     this.s3Client = new S3Client({
-      region,
-      credentials,
+      region: this.options.region,
+      credentials: this.options.credentials,
     })
-    this.defaultBucket = defaultBucket
+
+    this.defaultBucket = this.options.defaultBucket
   }
 
   send = ({

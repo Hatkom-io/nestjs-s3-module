@@ -1,24 +1,25 @@
 {
-  "name": "@hatkom/aws-s3-module",
-  "version": "1.0.0",
-  "main": "dist/index.ts",
+  "name": "@hatkom/nestjs-s3-module",
+  "version": "0.0.0-development",
+  "main": "dist/index.js",
   "author": "Max Schmide",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MaxSchmide/aws-s3-client.git"
+    "url": "git+https://github.com/Hatkom-io/nestjs-s3-module.git"
   },
   "bugs": {
-    "url": "https://github.com/MaxSchmide/aws-s3-client/issues"
+    "url": "https://github.com/Hatkom-io/nestjs-s3-module/issues"
   },
-  "homepage": "https://github.com/MaxSchmide/aws-s3-client#readme",
+  "homepage": "https://github.com/Hatkom-io/nestjs-s3-module#readme",
   "scripts": {
     "build": "rm -rf ./dist && tsc",
     "bump": "bunx npm-check-updates -u --deep -p bun && bun i && bun update"
   },
   "keywords": [
     "AWS",
-    "S3"
+    "S3",
+    "NestJS"
   ],
   "peerDependencies": {
     "@aws-sdk/client-s3": "^3.670.0",

@@ -1,3 +1,5 @@
+import { ModuleMetadata } from '@nestjs/common'
+
 export type DefaultOptions = {
   region: string
   credentials?: {
@@ -19,4 +21,10 @@ export type SendArgs = DefaultArgs & {
 
 export type SignedUrlArgs = DefaultArgs & {
   expiresIn?: number
+}
+
+export type ModuleOptions = Pick<ModuleMetadata, 'imports'> & {
+  inject: any[]
+  useFactory: (...args: any[]) => Promise<DefaultOptions> | DefaultOptions
+  imports?: any[]
 }

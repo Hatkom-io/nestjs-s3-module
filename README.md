@@ -1,1 +1,1 @@
-# AWS S3 Client
+# NestJS S3 Client Module
