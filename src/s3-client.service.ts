@@ -21,7 +21,7 @@ export class S3Service {
     @Inject(MODULE_OPTIONS) private readonly options: DefaultOptions,
   ) {
     this.s3Client = new S3Client({
-      region: this.options.region,
+      region: this.options.credentials?.region,
       credentials: this.options.credentials,
     })
 
