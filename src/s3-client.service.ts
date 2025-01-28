@@ -18,10 +18,14 @@ export class S3Service {
   private readonly defaultBucket?: string
 
   constructor(@Inject(MODULE_OPTIONS) private readonly args: DefaultOptions) {
-    this.s3Client = new S3Client({
-      region: this.args?.region,
-      ...(this.args?.credentials ? { credentials: this.args.credentials } : {}),
-    })
+    this.s3Client = this.args.credentials
+      ? new S3Client({
+          region: this.args.region,
+          credentials: this.args.credentials,
+        })
+      : new S3Client({
+          region: this.args.region,
+        })
 
     this.defaultBucket = this.args.defaultBucket
   }
