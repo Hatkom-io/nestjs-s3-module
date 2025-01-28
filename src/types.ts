@@ -1,8 +1,8 @@
 import { ModuleMetadata } from '@nestjs/common'
 
 export type DefaultOptions = {
+  region: string
   credentials?: {
-    region: string
     accessKeyId: string
     secretAccessKey: string
   }

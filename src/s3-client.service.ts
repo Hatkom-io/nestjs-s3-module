@@ -17,15 +17,13 @@ export class S3Service {
   private readonly s3Client: S3Client
   private readonly defaultBucket?: string
 
-  constructor(
-    @Inject(MODULE_OPTIONS) private readonly options: DefaultOptions,
-  ) {
+  constructor(@Inject(MODULE_OPTIONS) private readonly args: DefaultOptions) {
     this.s3Client = new S3Client({
-      region: this.options.credentials?.region,
-      credentials: this.options.credentials,
+      region: this.args?.region,
+      ...(this.args?.credentials ? { credentials: this.args.credentials } : {}),
     })
 
-    this.defaultBucket = this.options.defaultBucket
+    this.defaultBucket = this.args.defaultBucket
   }
 
   send = ({
