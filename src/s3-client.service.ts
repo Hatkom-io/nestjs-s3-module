@@ -1,6 +1,8 @@
 import {
   DeleteObjectCommand,
   DeleteObjectCommandOutput,
+  DeleteObjectsCommand,
+  DeleteObjectsCommandOutput,
   GetObjectCommand,
   GetObjectCommandOutput,
   PutObjectCommand,
@@ -10,7 +12,7 @@ import {
 import { getSignedUrl } from '@aws-sdk/s3-request-presigner'
 import { Inject, Injectable } from '@nestjs/common'
 import { MODULE_OPTIONS } from './constants'
-import { DefaultArgs, DefaultOptions, SendArgs, SignedUrlArgs } from './types'
+import { DefaultArgs, DefaultOptions, DeleteManyArgs, SendArgs, SignedUrlArgs } from './types'
 
 @Injectable()
 export class S3Service {
@@ -57,6 +59,26 @@ export class S3Service {
       }),
     )
   }
+
+
+  deleteMany = ({
+    paths,
+    bucket,
+  }: DeleteManyArgs): Promise<DeleteObjectsCommandOutput | undefined> => {
+    if (paths.length === 0) {
+      return Promise.resolve(undefined)
+    }
+
+    return this.s3Client.send(
+      new DeleteObjectsCommand({
+        Bucket: bucket?? this.defaultBucket,
+        Delete: {
+          Objects: paths.map((Key) => ({ Key })),
+        },
+      }),
+    )
+  }
+
 
   get = async ({
     bucket,

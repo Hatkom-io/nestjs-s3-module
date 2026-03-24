@@ -14,6 +14,11 @@ export type DefaultArgs = {
   filepath: string
 }
 
+export type DeleteManyArgs = {
+  paths: string[]
+  bucket: string
+}
+
 export type SendArgs = DefaultArgs & {
   buffer: Buffer
   contentType?: string
