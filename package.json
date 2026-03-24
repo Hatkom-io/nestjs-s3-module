@@ -14,7 +14,7 @@
   "homepage": "https://github.com/Hatkom-io/nestjs-s3-module#readme",
   "scripts": {
     "build": "rm -rf ./dist && tsc",
-    "bump": "bunx npm-check-updates -u --deep -p bun && bun i && bun update",
+    "bump": "bunx npm-check-updates -u --deep -p bun && bun i && bun update"
   },
   "keywords": [
     "AWS",
