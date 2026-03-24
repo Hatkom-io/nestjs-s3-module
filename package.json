@@ -14,7 +14,8 @@
   "homepage": "https://github.com/Hatkom-io/nestjs-s3-module#readme",
   "scripts": {
     "build": "rm -rf ./dist && tsc",
-    "bump": "bunx npm-check-updates -u --deep -p bun && bun i && bun update"
+    "bump": "bunx npm-check-updates -u --deep -p bun && bun i && bun update",
+    "semantic-release": "semantic-release"
   },
   "keywords": [
     "AWS",
@@ -33,6 +34,11 @@
     "@types/bun": "latest",
     "@biomejs/biome": "^2.4.8",
     "@types/node": "^25.5.0",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.2",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^10.3.5",
+    "@semantic-release/npm": "^12.0.1",
+    "semantic-release": "^25.0.3"
   }
 }
