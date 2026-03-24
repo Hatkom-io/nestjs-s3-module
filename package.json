@@ -1,6 +1,6 @@
 {
   "name": "@hatkom/nestjs-s3-module",
-  "version": "0.0.0-development",
+  "version": "1.1.1",
   "main": "dist/index.js",
   "author": "Max Schmide",
   "license": "MIT",
